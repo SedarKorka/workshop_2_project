@@ -23,24 +23,92 @@ library(rpart.plot)
 library(randomForest)
 ```
 
-# Load the data into Rstudio
+# Load the dataset
 ```{r}
-data <- read_csv("insurance.csv")
-head(data)
+insurance_data <- read_csv("insurance.csv")
+head(insurance_data)
 ```
-# Check features in the dataset
+## Data Exploration
+```{r} 
+data_shape <- dim(insurance_data)
+
+# Print the shape of the dataset
+cat("Number of rows:", data_shape[1], "\n")
+cat("Number of columns:", data_shape[2], "\n")
+```
+
 
 ```{r }
-str(data)
+# Define a function to categorize BMI
+bmi_category <- function(bmi) {
+  if (bmi < 18.5) {
+    return('under-weight')
+  } else if (bmi >= 18.5 && bmi <= 24.9) {
+    return('normal-weight')
+  } else if (bmi >= 25 && bmi <= 29.9) {
+    return('over-weight')
+  } else if (bmi >= 30.0) {
+    return('obese')
+  } else {
+    return('unknown')  # Handle cases where BMI is not in any category
+  }
+}
+
+# Define a function to categorize age
+age_category <- function(age) {
+  age_dict <- c('0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90-99', '100-200')
+  return(age_dict[findInterval(age, seq(0, 110, by = 10))])
+}
+
+# Add new columns to the data frame
+insurance_data$cbmi <- sapply(insurance_data$bmi, bmi_category)
+insurance_data$cage <- sapply(insurance_data$age, age_category)
+
+# Print counts by age category
+print("Age by category")
+by_age <- table(insurance_data$cage)
+print(by_age)
+cat(rep('-', 80), '\n')
+
+# Print counts by sex
+print("Gender")
+by_sex <- table(insurance_data$sex)
+print(by_sex)
+cat(rep('-', 80), '\n')
+
+# Print counts by smoker status
+print("Status")
+by_smoker <- table(insurance_data$smoker)
+print(by_smoker)
+cat(rep('-', 80), '\n')
+
+# Print counts by region
+print("Region")
+by_region <- table(insurance_data$region)
+print(by_region)
+cat(rep('-', 80), '\n')
+
+# Print counts by number of children
+print("Children")
+by_children <- table(insurance_data$children)
+print(by_children)
+cat(rep('-', 80), '\n')
+
+# Print counts by BMI category
+print("BMI")
+by_bmi <- table(insurance_data$cbmi)
+print(by_bmi)
+cat(rep('-', 80), '\n')
+
 ```
 # EXPLORATORY DATA ANALYSIS (EDA)
 ```{r}
-summary(data)
+#summary(data)
 ```
 
 ## Check missing value.
 ```{r}
-colSums(is.na(data))
+colSums(is.na(insurance_data))
 
 ```
 ## Analysis on categorical features.
