@@ -17,7 +17,8 @@ library(readr)
 library(corrplot)
 library(cowplot)
 library(viridis)
-#library(caret)
+library(tibble)
+library(caret)
 library(rpart)
 library(rpart.plot)
 library(randomForest)
@@ -34,11 +35,132 @@ data_shape <- dim(insurance_data)
 
 # Print the shape of the dataset
 cat("Number of rows:", data_shape[1], "\n")
-cat("Number of columns:", data_shape[2], "\n")
+cat("Number of columns:", data_shape[2], "\n") 
 ```
+#Data Cleaning
+## cheack missing values
+```{r}
+colSums(is.na(insurance_data))
 
+```
+## check duplicate rows
+```{r}
 
-```{r }
+duplicate_rows <- sum(duplicated(insurance_data))
+print(duplicate_rows)
+```
+## drop Duplicated rows
+```{r}
+data <- distinct(insurance_data)
+```
+#Exploring the dataset
+```{r} 
+
+# Age
+age_mean <- mean(insurance_data$age)
+age_sd <- sd(insurance_data$age)
+age_min <- min(insurance_data$age)
+age_max <- max(insurance_data$age)
+
+# Sex
+sex_counts <- table(insurance_data$sex)
+
+# BMI
+bmi_mean <- mean(insurance_data$bmi)
+bmi_sd <- sd(insurance_data$bmi)
+bmi_min <- min(insurance_data$bmi)
+bmi_max <- max(insurance_data$bmi)
+
+# Children
+children_mean <- mean(insurance_data$children)
+children_sd <- sd(insurance_data$children)
+children_min <- min(insurance_data$children)
+children_max <- max(insurance_data$children)
+
+# Smoker
+smoker_counts <- table(insurance_data$smoker)
+
+# Region
+region_counts <- table(insurance_data$region)
+
+# Charges
+charges_mean <- mean(insurance_data$charges)
+charges_sd <- sd(insurance_data$charges)
+charges_min <- min(insurance_data$charges)
+charges_max <- max(insurance_data$charges)
+
+# Print the results
+cat("Age:\n")
+cat("Mean:", age_mean, "\n")
+cat("Standard Deviation:", age_sd, "\n")
+cat("Min:", age_min, ", Max:", age_max, "\n\n")
+
+cat("Sex:\n")
+cat("Male:", sex_counts["male"], "instances\n")
+cat("Female:", sex_counts["female"], "instances\n\n")
+
+cat("BMI (Body Mass Index):\n")
+cat("Mean:", bmi_mean, "\n")
+cat("Standard Deviation:", bmi_sd, "\n")
+cat("Min:", bmi_min, ", Max:", bmi_max, "\n\n")
+
+cat("Children:\n")
+cat("Mean:", children_mean, "\n")
+cat("Standard Deviation:", children_sd, "\n")
+cat("Min:", children_min, ", Max:", children_max, "\n\n")
+
+cat("Smoker:\n")
+cat("Yes:", smoker_counts["yes"], "instances\n")
+cat("No:", smoker_counts["no"], "instances\n\n")
+
+cat("Region:\n")
+cat("Southwest:", region_counts["southwest"], "instances\n")
+cat("Southeast:", region_counts["southeast"], "instances\n")
+cat("Northwest:", region_counts["northwest"], "instances\n")
+cat("Northeast:", region_counts["northeast"], "instances\n\n")
+
+cat("Charges:\n")
+cat("Mean:", charges_mean, "\n")
+cat("Standard Deviation:", charges_sd, "\n")
+cat("Min:", charges_min, ", Max:", charges_max, "\n")
+
+```
+#Exploring data Analysis
+
+## information about the dataset
+```{r} 
+str(data)
+```
+#### distribution on age
+```{r} 
+# Create a histogram
+ggplot(data, aes(x = age)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Age Distribution") +
+  theme_minimal()
+```
+```{r}
+# Define a function to categorize age
+age_category <- function(age) {
+  age_dict <- c('0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90-99', '100-200')
+  return(age_dict[findInterval(age, seq(0, 110, by = 10))])
+}
+# Print counts by age category
+print("Age by category")
+by_age <- table(insurance_data$cage)
+print(by_age)
+cat(rep('-', 80), '\n')
+```
+#BMI Distribution
+```{r} 
+ggplot(data, aes(x = bmi)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black", alpha = 0.7) +
+  geom_vline(xintercept = 18.5, color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 24.9, color = "red", linetype = "dashed") +
+  labs(title = "BMI Distribution") +
+  theme_minimal()
+```
+```{r}
 # Define a function to categorize BMI
 bmi_category <- function(bmi) {
   if (bmi < 18.5) {
@@ -54,90 +176,52 @@ bmi_category <- function(bmi) {
   }
 }
 
-# Define a function to categorize age
-age_category <- function(age) {
-  age_dict <- c('0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90-99', '100-200')
-  return(age_dict[findInterval(age, seq(0, 110, by = 10))])
-}
-
-# Add new columns to the data frame
-insurance_data$cbmi <- sapply(insurance_data$bmi, bmi_category)
-insurance_data$cage <- sapply(insurance_data$age, age_category)
-
-# Print counts by age category
-print("Age by category")
-by_age <- table(insurance_data$cage)
-print(by_age)
-cat(rep('-', 80), '\n')
-
-# Print counts by sex
-print("Gender")
-by_sex <- table(insurance_data$sex)
-print(by_sex)
-cat(rep('-', 80), '\n')
-
-# Print counts by smoker status
-print("Status")
-by_smoker <- table(insurance_data$smoker)
-print(by_smoker)
-cat(rep('-', 80), '\n')
-
-# Print counts by region
-print("Region")
-by_region <- table(insurance_data$region)
-print(by_region)
-cat(rep('-', 80), '\n')
-
-# Print counts by number of children
-print("Children")
-by_children <- table(insurance_data$children)
-print(by_children)
-cat(rep('-', 80), '\n')
-
 # Print counts by BMI category
 print("BMI")
 by_bmi <- table(insurance_data$cbmi)
 print(by_bmi)
 cat(rep('-', 80), '\n')
-
-```
-# EXPLORATORY DATA ANALYSIS (EDA)
-```{r}
-#summary(data)
 ```
 
-## Check missing value.
 ```{r}
-colSums(is.na(insurance_data))
+# Create a count plot with labels
+ggplot(data, aes(x = factor(children))) +
+  geom_bar(fill = "skyblue", color = "black", alpha = 0.7) +
+  geom_text(stat = "count", aes(label = ..count..), vjust = -0.5) +
+  labs(title = "Count of Children") +
+  theme_minimal()
 
+```
+```{r}
+# Print counts by number of children
+print("Children")
+by_children <- table(insurance_data$children)
+print(by_children)
+cat(rep('-', 80), '\n')
 ```
 ## Analysis on categorical features.
 categorical feature consist of sex, smoker, and region.
-
-
-
 ### analysis on sex
-```{r}
-# count plot
-# get freq/count
-sex_table <- table(data$sex)
-fr <- as.data.frame.table(sex_table)
-# plot freq
-g <- ggplot(fr, aes(x=Var1, y=Freq)) + 
-  geom_bar(stat="identity", fill="tomato2") + 
-  geom_text(aes(label=Freq, vjust=-0.2), alpha=0.7) + 
-  ggtitle("sex Distribution", subtitle = "frequency/count of gender type") + 
-  labs(x="sex", y="count")
-# scatter plot
-gg <- ggplot(data, aes(x=sex, y=charges)) + 
-  geom_jitter(aes(color=sex), alpha=0.7) + 
-  ggtitle("sex vs charges")
-p <- plot_grid(g, gg)
-title <- ggdraw() + draw_label("Analysis on sex", fontface = 'bold')
-plot_grid(title, p, ncol = 1, rel_heights = c(0.1,1))
+```{r} 
+
+# Create a count plot for sex distribution
+g <- ggplot(insurance_data, aes(x = sex)) +
+  geom_bar(stat = "count", fill = "skyblue", alpha = 0.7) +
+  geom_text(stat = "count", aes(label = ..count.., vjust = -0.2), alpha = 0.7) +
+  ggtitle("Sex Distribution", subtitle = "Frequency/Count of Gender Type") +
+  labs(x = "Sex", y = "Count")
+
+# Display the plot
+print(g)
+
 ```
-Female vs male count/distribution balanced with slightly more male. There is no pattern on charges.
-As we saw there is no missing data in our dataset.
+```{r}
+# Print counts by sex
+print("Gender")
+by_sex <- table(insurance_data$sex)
+print(by_sex)
+cat(rep('-', 80), '\n')
+```
 ### analysis on smoker
 ```{r}
 # count plot
@@ -149,22 +233,25 @@ g <- ggplot(fr, aes(x="", y=Freq, fill = factor(Var1))) +
   geom_bar(width=1, stat="identity") + 
   geom_text(aes(label = paste(round(Freq / sum(Freq) * 100, 1), "%")),
             position = position_stack(vjust = 0.5)) +
-  ggtitle("smoker Distribution", subtitle = "frequency/count of smoking customer") + 
+  ggtitle("smoker Distribution") + 
   labs(x="smoker", y="count") + 
   coord_polar(theta = "y", start=1)  + 
   theme(legend.position="bottom") + 
   guides(fill=guide_legend(title="")) + 
-  scale_fill_manual(values = c("#58508d", "#bc5090", "#ff6361", "#ffa600"))
-# scatter plot
-gg <- ggplot(data, aes(x=smoker, y=charges)) + 
-  geom_jitter(color="lightcoral", alpha=0.7) + 
-  ggtitle("smoker vs charges") + 
-  theme(legend.position="None")
-p <- plot_grid(g, gg)
+  scale_fill_manual(values = c("green", "red"))
+ 
+p <- plot_grid(g)
 title <- ggdraw() + draw_label("Analysis on smoker", fontface = 'bold')
 plot_grid(title, p, ncol = 1, rel_heights = c(0.1,1))
 ```
-There are less smoker. Customer who smoke show higher charges than those who don't.
+```{r}
+# Print counts by smoker status
+print("Smoker")
+by_smoker <- table(insurance_data$smoker)
+print(by_smoker)
+cat(rep('-', 80), '\n')
+```
+There are less smoker. 
 
 ### analysis on region
 
@@ -178,82 +265,26 @@ g <- ggplot(fr, aes(x="", y=Freq, fill = factor(Var1))) +
   geom_bar(width=1, stat="identity") + 
   geom_text(aes(label = paste(round(Freq / sum(Freq) * 100, 1), "%")),
             position = position_stack(vjust = 0.5)) +
-  ggtitle("region Distribution", subtitle = "region of customer (US)") + 
+  ggtitle("region Distribution" ) + 
   labs(x="region", y="count") +
   coord_polar(theta = "y", start=1)  + 
   theme(legend.position="bottom") + 
   guides(fill=guide_legend(title="")) + 
   scale_fill_manual(values = c("#58508d", "#bc5090", "#ff6361", "#ffa600"))
-# scatter plot
-gg <- ggplot(data, aes(x=region, y=charges)) + 
-  geom_jitter(color="DarkOliveGreen", alpha=0.7) + 
-  ggtitle("region vs charges") +
-  theme(axis.text.x = element_text(angle=90), legend.position = "None") 
-p <- plot_grid(g, gg)
+
+p <- plot_grid(g)
 title <- ggdraw() + draw_label("Analysis on region", fontface = 'bold')
 plot_grid(title, p, ncol = 1, rel_heights = c(0.1,1))
 
 ```
-
-There are 4 region, with 'southeast' has slightly more count than the other 3 that was pretty balanced to each other. There are no pattern on charges.
-## Distribution analysis on numerical features.
-
-Numerical features consist of age, bmi, children, and charges.
-
-### distribution on age
-
 ```{r}
-g <- ggplot(data, aes(age)) + 
-  scale_fill_brewer(palette = "Spectral") + 
-  geom_histogram(fill="thistle", binwidth = 1, col="black", size=.8) +
-  ggtitle("age Distribution", subtitle = "distribution of age vs count")
-gg <- ggplot(data, aes(x=age, y=charges)) + 
-  geom_point(colour="RosyBrown", alpha=0.3) + 
-  # geom_jitter(aes(color="re"), alpha=0.3) + 
-  ggtitle("age vs charges") + 
-  theme(legend.position="None")
-p <- plot_grid(g, gg)
-title <- ggdraw() + draw_label("Analysis on age", fontface = 'bold')
-plot_grid(title, p, ncol = 1, rel_heights = c(0.1,1))
+# Print counts by region
+print("Region")
+by_region <- table(insurance_data$region)
+print(by_region)
+cat(rep('-', 80), '\n')
 ```
-
-Ages have balanced distribution about 25-ish on age 20-64 with were more count on age 18 and 19. Age seems correspond linearly to charges. however, we can observe 3 cluster of charges, 0-20000, 20000ish, and 40000ish. 
-### distribution on bmi
-```{r}
-g <- ggplot(data, aes(bmi)) + 
-  geom_density(fill="#00798c", color="black", alpha=0.7) + 
-  ggtitle("bmi Distribution", subtitle = "distribution of bmi vs count")
-gg <- ggplot(data, aes(x=bmi, y=charges)) + 
-  # geom_point(aes(col=bmi))
-  geom_jitter(colour="#2e4057", alpha=0.3) + 
-  ggtitle("bmi vs charges") + 
-  theme(legend.position="None")
-p <- plot_grid(g, gg)
-title <- ggdraw() + draw_label("Analysis on bmi", fontface = 'bold')
-plot_grid(title, p, ncol = 1, rel_heights = c(0.1,1))
-```
-
-Bmi distributed normally with average of 30.66. There are slightly increase of charges as the bmi increase.
-
-
-### distribution on children count.
-
-```{r}
-g <- ggplot(data, aes(children)) + 
-  scale_fill_brewer(palette = "Spectral") + 
-  geom_histogram(fill="YellowGreen", binwidth = 1, col="black", size=.7) +
-  ggtitle("children Distribution", subtitle = "distribution of number of children(dependents) covered")
-gg <- ggplot(data, aes(x=children, y=charges)) + 
-  # geom_point(aes(col=bmi))
-  geom_jitter(colour = "lightseagreen", alpha=0.3) + 
-  ggtitle("children vs charges") + 
-  theme(legend.position="None")
-p <- plot_grid(g, gg)
-title <- ggdraw() + draw_label("Analysis on children", fontface = 'bold')
-plot_grid(title, p, ncol = 1, rel_heights = c(0.1,1))
-```
-
-Most customer has no children, the more children count the less the counts. There are no pattern shown on charges.
+#Processing the dataset
 ## Encoding.
 
 ```{r}
@@ -261,10 +292,10 @@ encode <- function(x, order = unique(x)){
   x <- as.numeric(factor(x, levels = order, exclude = NULL))
   x
 }
-encoded_df <- data
-encoded_df[["sex"]] <- encode(data[["sex"]])
-encoded_df[["smoker"]] <- encode(data[["smoker"]])
-encoded_df[["region"]] <- encode(data[["region"]])
+encoded_df <- insurance_data
+encoded_df[["sex"]] <- encode(insurance_data[["sex"]])
+encoded_df[["smoker"]] <- encode(insurance_data[["smoker"]])
+encoded_df[["region"]] <- encode(insurance_data[["region"]])
 head(encoded_df)
 ```
 
@@ -275,17 +306,27 @@ str(encoded_df)
 
 
 ```{r}
-corr <- cor(encoded_df)
-g <- corrplot(corr, type="lower", tl.col = "black") 
+#corr <- cor(encoded_df)
+#g <- corrplot(corr, type="lower", tl.col = "black") 
+
+
+# Select only numeric columns from the dataframe
+numeric_columns <- sapply(encoded_df, is.numeric)
+numeric_data <- encoded_df[, numeric_columns]
+
+# Calculate correlation matrix
+corr <- cor(numeric_data)
+
+# Plot correlation matrix
+library(corrplot)
+g <- corrplot(corr, type = "lower", tl.col = "black")
+
 ```
 
 
 ```{r}
 gg <- heatmap(x=corr, col = magma(10), symm=T)
 ```
-
-
-As we expected, smoker has higher correlation to charges then other, there are also slight correlation to age and bmi.
 # MODEL BUILDING
 
 Spilt dataset to train and test with ratio 7:3.
@@ -302,7 +343,7 @@ split_index <- createDataPartition(encoded_df$charges, p = 0.7, list = FALSE)
 train_data <- encoded_df[split_index, ]
 test_data <- encoded_df[-split_index, ]
 
-# Check the dimensions of the training and test sets
+# Check the dimensions of the train set and test set
 dim(train_data)
 dim(test_data)
 
@@ -311,12 +352,12 @@ dim(test_data)
 
 
 
-### Linear Regression Model
+### Build Linear Regression Model
 ```{r}
 lr <- lm(charges ~ age + sex + bmi + children + smoker + region, data=train_data)
 print(lr)
-# Predict on test data
 
+# Predict on test data
 test_data$pred <- predict(lr, newdata = test_data)
 
 # Calculate R-squared
@@ -351,61 +392,48 @@ dum <- data.frame(age = 24,
 print(paste0("Charges Prediction for dum: ", round(predict(lr, dum), 2)))
 ```
 
-### Decision Tree
+### Decision Tree model
 ```{r}
-# build the decision tree model
-dr <- rpart(smoker ~ age + sex + bmi + region, data = train_data, 
-               method = "class")
+# build the decision tree 
+decision_tr <- rpart(smoker ~ age + sex + bmi + region, data = train_data, method = "class")
 
 # make predictions on the test data
-predictions <- predict(dr, test_data, type = "class")
-
-# convert predictions and test data to factor and ensure they have the same levels
+predictions <- predict(decision_tr, test_data, type = "class")
+print("-------------------------------------------------------------------------------------------")
+# convert predictions and test data to factor and make the levels as same
 predictions <- as.factor(predictions)
 test_data$smoker <- as.factor(test_data$smoker)
 levels(predictions) <- levels(test_data$smoker)
 
-
-# evaluate the model performance
-# Evalute Performance
+print("-------------------------------------------------------------------------------------------")
+# evaluation of the the model 
+# Confusion matrix to evalute Performance
 confusion_matrix <- table(predicted = predictions, actual = test_data$smoker)
 confusion_matrix
-summary(dr)
-accuracy2 <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
-print(paste("Accuracy of the Decision Tree model is:", accuracy2))
+print("-------------------------------------------------------------------------------------------")
+summary(decision_tr) 
 
 ```
-# Print accuracy for Decision tree model
+#Accuracy of the Decision tree model
 ```{r}
-accuracy2 <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
-print(paste("Accuracy of the Decision Tree model is:", accuracy2))
+accuracy_of_decision_tree <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
+print(paste("The accuracy of the Decision Tree model is : ", accuracy_of_decision_tree))
 ```
-
-
-
-
-
-
-
-
-### Rnadom Forest
+###build the Random forest model
 ```{r}
-# build the Random forest model
 random_forest_model <- randomForest(as.factor(smoker) ~ ., data = train_data, ntree = 500)
 
 # make predictions on the test data
 random_forest_predictions <- predict(random_forest_model, newdata = test_data, type = "class")
 
-
+print("-------------------------------------------------------------------------------------------")
 # Evalute Performance
 confusion_matrix <- table(predicted = random_forest_predictions, actual = test_data$smoker)
 confusion_matrix
-
+print("-------------------------------------------------------------------------------------------")
 
 # Summary of the model
 summary(random_forest_model)
-
-
 
 ```
 # Calculate the accuracy of the model
