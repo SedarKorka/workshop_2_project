@@ -1,0 +1,1382 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={final\_project},
+  pdfauthor={Diallo Mamadou Korka},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{final\_project}
+\author{Diallo Mamadou Korka}
+\date{2023-12-23}
+
+\begin{document}
+\maketitle
+
+\hypertarget{loading-the-libraries-required-for-this-project}{%
+\section{Loading the libraries required for this
+project}\label{loading-the-libraries-required-for-this-project}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'tibble' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'readr' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.3     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v lubridate 1.9.2     v tibble    3.2.1
+## v purrr     1.0.1     v tidyr     1.3.0
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'corrplot' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## corrplot 0.92 loaded
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(cowplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'cowplot'
+## 
+## The following object is masked from 'package:lubridate':
+## 
+##     stamp
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(viridis)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'viridis' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: viridisLite
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'viridisLite' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tibble)}
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'caret' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+## 
+## Attaching package: 'caret'
+## 
+## The following object is masked from 'package:purrr':
+## 
+##     lift
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rpart)}
+\FunctionTok{library}\NormalTok{(rpart.plot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'rpart.plot' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(randomForest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'randomForest' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## randomForest 4.7-1.1
+## Type rfNews() to see new features/changes/bug fixes.
+## 
+## Attaching package: 'randomForest'
+## 
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
+## 
+## The following object is masked from 'package:ggplot2':
+## 
+##     margin
+\end{verbatim}
+
+\hypertarget{load-the-dataset}{%
+\section{Load the dataset}\label{load-the-dataset}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{insurance\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"insurance.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 1338 Columns: 7
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (3): sex, smoker, region
+## dbl (4): age, bmi, children, charges
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(insurance\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 7
+##     age sex      bmi children smoker region    charges
+##   <dbl> <chr>  <dbl>    <dbl> <chr>  <chr>       <dbl>
+## 1    19 female  27.9        0 yes    southwest  16885.
+## 2    18 male    33.8        1 no     southeast   1726.
+## 3    28 male    33          3 no     southeast   4449.
+## 4    33 male    22.7        0 no     northwest  21984.
+## 5    32 male    28.9        0 no     northwest   3867.
+## 6    31 female  25.7        0 no     southeast   3757.
+\end{verbatim}
+
+\hypertarget{data-exploration}{%
+\subsection{Data Exploration}\label{data-exploration}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_shape }\OtherTok{\textless{}{-}} \FunctionTok{dim}\NormalTok{(insurance\_data)}
+
+\CommentTok{\# Print the shape of the dataset}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Number of rows:"}\NormalTok{, data\_shape[}\DecValTok{1}\NormalTok{], }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Number of rows: 1338
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Number of columns:"}\NormalTok{, data\_shape[}\DecValTok{2}\NormalTok{], }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Number of columns: 7
+\end{verbatim}
+
+\#Data Cleaning \#\# cheack missing values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(insurance\_data))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      age      sex      bmi children   smoker   region  charges 
+##        0        0        0        0        0        0        0
+\end{verbatim}
+
+\hypertarget{check-duplicate-rows}{%
+\subsection{check duplicate rows}\label{check-duplicate-rows}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{duplicate\_rows }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{duplicated}\NormalTok{(insurance\_data))}
+\FunctionTok{print}\NormalTok{(duplicate\_rows)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\hypertarget{drop-duplicated-rows}{%
+\subsection{drop Duplicated rows}\label{drop-duplicated-rows}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{distinct}\NormalTok{(insurance\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\#Exploring the dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Age}
+\NormalTok{age\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{age)}
+\NormalTok{age\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{age)}
+\NormalTok{age\_min }\OtherTok{\textless{}{-}} \FunctionTok{min}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{age)}
+\NormalTok{age\_max }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{age)}
+
+\CommentTok{\# Sex}
+\NormalTok{sex\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{sex)}
+
+\CommentTok{\# BMI}
+\NormalTok{bmi\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{bmi)}
+\NormalTok{bmi\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{bmi)}
+\NormalTok{bmi\_min }\OtherTok{\textless{}{-}} \FunctionTok{min}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{bmi)}
+\NormalTok{bmi\_max }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{bmi)}
+
+\CommentTok{\# Children}
+\NormalTok{children\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{children)}
+\NormalTok{children\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{children)}
+\NormalTok{children\_min }\OtherTok{\textless{}{-}} \FunctionTok{min}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{children)}
+\NormalTok{children\_max }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{children)}
+
+\CommentTok{\# Smoker}
+\NormalTok{smoker\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{smoker)}
+
+\CommentTok{\# Region}
+\NormalTok{region\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{region)}
+
+\CommentTok{\# Charges}
+\NormalTok{charges\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{charges)}
+\NormalTok{charges\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{charges)}
+\NormalTok{charges\_min }\OtherTok{\textless{}{-}} \FunctionTok{min}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{charges)}
+\NormalTok{charges\_max }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{charges)}
+
+\CommentTok{\# Print the results}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Age:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Age:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Mean:"}\NormalTok{, age\_mean, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Mean: 39.20703
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Standard Deviation:"}\NormalTok{, age\_sd, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Standard Deviation: 14.04996
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Min:"}\NormalTok{, age\_min, }\StringTok{", Max:"}\NormalTok{, age\_max, }\StringTok{"}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Min: 18 , Max: 64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Sex:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sex:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Male:"}\NormalTok{, sex\_counts[}\StringTok{"male"}\NormalTok{], }\StringTok{"instances}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Male: 676 instances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Female:"}\NormalTok{, sex\_counts[}\StringTok{"female"}\NormalTok{], }\StringTok{"instances}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Female: 662 instances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"BMI (Body Mass Index):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## BMI (Body Mass Index):
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Mean:"}\NormalTok{, bmi\_mean, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Mean: 30.6634
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Standard Deviation:"}\NormalTok{, bmi\_sd, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Standard Deviation: 6.098187
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Min:"}\NormalTok{, bmi\_min, }\StringTok{", Max:"}\NormalTok{, bmi\_max, }\StringTok{"}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Min: 15.96 , Max: 53.13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Children:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Children:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Mean:"}\NormalTok{, children\_mean, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Mean: 1.094918
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Standard Deviation:"}\NormalTok{, children\_sd, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Standard Deviation: 1.205493
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Min:"}\NormalTok{, children\_min, }\StringTok{", Max:"}\NormalTok{, children\_max, }\StringTok{"}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Min: 0 , Max: 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Smoker:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Smoker:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Yes:"}\NormalTok{, smoker\_counts[}\StringTok{"yes"}\NormalTok{], }\StringTok{"instances}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Yes: 274 instances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"No:"}\NormalTok{, smoker\_counts[}\StringTok{"no"}\NormalTok{], }\StringTok{"instances}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## No: 1064 instances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Region:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Region:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Southwest:"}\NormalTok{, region\_counts[}\StringTok{"southwest"}\NormalTok{], }\StringTok{"instances}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Southwest: 325 instances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Southeast:"}\NormalTok{, region\_counts[}\StringTok{"southeast"}\NormalTok{], }\StringTok{"instances}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Southeast: 364 instances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Northwest:"}\NormalTok{, region\_counts[}\StringTok{"northwest"}\NormalTok{], }\StringTok{"instances}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Northwest: 325 instances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Northeast:"}\NormalTok{, region\_counts[}\StringTok{"northeast"}\NormalTok{], }\StringTok{"instances}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Northeast: 324 instances
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Charges:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Charges:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Mean:"}\NormalTok{, charges\_mean, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Mean: 13270.42
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Standard Deviation:"}\NormalTok{, charges\_sd, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Standard Deviation: 12110.01
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Min:"}\NormalTok{, charges\_min, }\StringTok{", Max:"}\NormalTok{, charges\_max, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Min: 1121.874 , Max: 63770.43
+\end{verbatim}
+
+\#Exploring data Analysis
+
+\hypertarget{information-about-the-dataset}{%
+\subsection{information about the
+dataset}\label{information-about-the-dataset}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## tibble [1,337 x 7] (S3: tbl_df/tbl/data.frame)
+##  $ age     : num [1:1337] 19 18 28 33 32 31 46 37 37 60 ...
+##  $ sex     : chr [1:1337] "female" "male" "male" "male" ...
+##  $ bmi     : num [1:1337] 27.9 33.8 33 22.7 28.9 ...
+##  $ children: num [1:1337] 0 1 3 0 0 0 1 3 2 0 ...
+##  $ smoker  : chr [1:1337] "yes" "no" "no" "no" ...
+##  $ region  : chr [1:1337] "southwest" "southeast" "southeast" "northwest" ...
+##  $ charges : num [1:1337] 16885 1726 4449 21984 3867 ...
+\end{verbatim}
+
+\hypertarget{distribution-on-age}{%
+\paragraph{distribution on age}\label{distribution-on-age}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a histogram}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ age)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Age Distribution"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{final_project_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define a function to categorize age}
+\NormalTok{age\_category }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(age) \{}
+\NormalTok{  age\_dict }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}0{-}9\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}10{-}19\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}20{-}29\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}30{-}39\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}40{-}49\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}50{-}59\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}60{-}69\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}70{-}79\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}80{-}89\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}90{-}99\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}100{-}200\textquotesingle{}}\NormalTok{)}
+  \FunctionTok{return}\NormalTok{(age\_dict[}\FunctionTok{findInterval}\NormalTok{(age, }\FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{110}\NormalTok{, }\AttributeTok{by =} \DecValTok{10}\NormalTok{))])}
+\NormalTok{\}}
+
+\CommentTok{\# Apply the age\_category function to create a new column \textquotesingle{}age\_category\textquotesingle{}}
+\NormalTok{insurance\_data}\SpecialCharTok{$}\NormalTok{age\_category }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{age, age\_category)}
+
+\CommentTok{\# Print counts by age category}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Age by category"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Age by category"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{by\_age }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{age\_category)}
+\FunctionTok{print}\NormalTok{(by\_age)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 10-19 20-29 30-39 40-49 50-59 60-69 
+##   137   280   257   279   271   114
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, }\DecValTok{80}\NormalTok{), }\StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\end{verbatim}
+
+\#BMI Distribution
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ bmi)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{1}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FloatTok{18.5}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FloatTok{24.9}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"BMI Distribution"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{final_project_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define a function to categorize BMI}
+\NormalTok{bmi\_category }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(bmi) \{}
+  \ControlFlowTok{if}\NormalTok{ (bmi }\SpecialCharTok{\textless{}} \FloatTok{18.5}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{\textquotesingle{}under{-}weight\textquotesingle{}}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (bmi }\SpecialCharTok{\textgreater{}=} \FloatTok{18.5} \SpecialCharTok{\&\&}\NormalTok{ bmi }\SpecialCharTok{\textless{}=} \FloatTok{24.9}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{\textquotesingle{}normal{-}weight\textquotesingle{}}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (bmi }\SpecialCharTok{\textgreater{}=} \DecValTok{25} \SpecialCharTok{\&\&}\NormalTok{ bmi }\SpecialCharTok{\textless{}=} \FloatTok{29.9}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{\textquotesingle{}over{-}weight\textquotesingle{}}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (bmi }\SpecialCharTok{\textgreater{}=} \FloatTok{30.0}\NormalTok{) \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{\textquotesingle{}obese\textquotesingle{}}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{return}\NormalTok{(}\StringTok{\textquotesingle{}unknown\textquotesingle{}}\NormalTok{)  }\CommentTok{\# Handle cases where BMI is not in any category}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Apply the bmi\_category function to create a new column \textquotesingle{}cbmi\textquotesingle{}}
+\NormalTok{insurance\_data}\SpecialCharTok{$}\NormalTok{cbmi }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{bmi, bmi\_category)}
+
+\CommentTok{\# Print counts by BMI category}
+\FunctionTok{print}\NormalTok{(}\StringTok{"BMI"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "BMI"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{by\_bmi }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{cbmi)}
+\FunctionTok{print}\NormalTok{(by\_bmi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## normal-weight         obese   over-weight  under-weight       unknown 
+##           222           707           377            20            12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, }\DecValTok{80}\NormalTok{), }\StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a count plot with labels}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(children))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\AttributeTok{stat =} \StringTok{"count"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ ..count..), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Count of Children"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The dot-dot notation (`..count..`) was deprecated in ggplot2 3.4.0.
+## i Please use `after_stat(count)` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\includegraphics{final_project_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print counts by number of children}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Children"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Children"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{by\_children }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{children)}
+\FunctionTok{print}\NormalTok{(by\_children)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   0   1   2   3   4   5 
+## 574 324 240 157  25  18
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, }\DecValTok{80}\NormalTok{), }\StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\end{verbatim}
+
+\hypertarget{analysis-on-categorical-features.}{%
+\subsection{Analysis on categorical
+features.}\label{analysis-on-categorical-features.}}
+
+categorical feature consist of sex, smoker, and region. \#\#\# analysis
+on sex
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a count plot for sex distribution}
+\NormalTok{g }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(insurance\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sex)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"count"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\AttributeTok{stat =} \StringTok{"count"}\NormalTok{, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ ..count.., }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.2}\NormalTok{), }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Sex Distribution"}\NormalTok{, }\AttributeTok{subtitle =} \StringTok{"Frequency/Count of Gender Type"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Sex"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}
+
+\CommentTok{\# Display the plot}
+\FunctionTok{print}\NormalTok{(g)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{final_project_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print counts by sex}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Gender"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Gender"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{by\_sex }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{sex)}
+\FunctionTok{print}\NormalTok{(by\_sex)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## female   male 
+##    662    676
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, }\DecValTok{80}\NormalTok{), }\StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\end{verbatim}
+
+\hypertarget{analysis-on-smoker}{%
+\subsubsection{analysis on smoker}\label{analysis-on-smoker}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# count plot}
+\CommentTok{\# get freq/count}
+\NormalTok{smoker\_table }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{smoker)}
+\NormalTok{fr }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame.table}\NormalTok{(smoker\_table)}
+\CommentTok{\# plot freq}
+\NormalTok{g }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(fr, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\StringTok{""}\NormalTok{, }\AttributeTok{y=}\NormalTok{Freq, }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(Var1))) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{width=}\DecValTok{1}\NormalTok{, }\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{round}\NormalTok{(Freq }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(Freq) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{)),}
+            \AttributeTok{position =} \FunctionTok{position\_stack}\NormalTok{(}\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"smoker Distribution"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{"smoker"}\NormalTok{, }\AttributeTok{y=}\StringTok{"count"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{coord\_polar}\NormalTok{(}\AttributeTok{theta =} \StringTok{"y"}\NormalTok{, }\AttributeTok{start=}\DecValTok{1}\NormalTok{)  }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position=}\StringTok{"bottom"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{fill=}\FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title=}\StringTok{""}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{, }\StringTok{"red"}\NormalTok{))}
+ 
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{plot\_grid}\NormalTok{(g)}
+\NormalTok{title }\OtherTok{\textless{}{-}} \FunctionTok{ggdraw}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{draw\_label}\NormalTok{(}\StringTok{"Analysis on smoker"}\NormalTok{, }\AttributeTok{fontface =} \StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{)}
+\FunctionTok{plot\_grid}\NormalTok{(title, p, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{, }\AttributeTok{rel\_heights =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{final_project_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print counts by smoker status}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Smoker"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Smoker"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{by\_smoker }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{smoker)}
+\FunctionTok{print}\NormalTok{(by\_smoker)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   no  yes 
+## 1064  274
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, }\DecValTok{80}\NormalTok{), }\StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\end{verbatim}
+
+There are less smoker.
+
+\hypertarget{analysis-on-region}{%
+\subsubsection{analysis on region}\label{analysis-on-region}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# count plot}
+\CommentTok{\# get freq/count}
+\NormalTok{region\_table }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{region)}
+\NormalTok{fr }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame.table}\NormalTok{(region\_table)}
+\CommentTok{\# plot freq}
+\NormalTok{g }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(fr, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\StringTok{""}\NormalTok{, }\AttributeTok{y=}\NormalTok{Freq, }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(Var1))) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{width=}\DecValTok{1}\NormalTok{, }\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{round}\NormalTok{(Freq }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(Freq) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{)),}
+            \AttributeTok{position =} \FunctionTok{position\_stack}\NormalTok{(}\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"region Distribution"}\NormalTok{ ) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{"region"}\NormalTok{, }\AttributeTok{y=}\StringTok{"count"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_polar}\NormalTok{(}\AttributeTok{theta =} \StringTok{"y"}\NormalTok{, }\AttributeTok{start=}\DecValTok{1}\NormalTok{)  }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position=}\StringTok{"bottom"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{fill=}\FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title=}\StringTok{""}\NormalTok{)) }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#58508d"}\NormalTok{, }\StringTok{"\#bc5090"}\NormalTok{, }\StringTok{"\#ff6361"}\NormalTok{, }\StringTok{"\#ffa600"}\NormalTok{))}
+
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{plot\_grid}\NormalTok{(g)}
+\NormalTok{title }\OtherTok{\textless{}{-}} \FunctionTok{ggdraw}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{draw\_label}\NormalTok{(}\StringTok{"Analysis on region"}\NormalTok{, }\AttributeTok{fontface =} \StringTok{\textquotesingle{}bold\textquotesingle{}}\NormalTok{)}
+\FunctionTok{plot\_grid}\NormalTok{(title, p, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{, }\AttributeTok{rel\_heights =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{final_project_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print counts by region}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Region"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Region"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{by\_region }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(insurance\_data}\SpecialCharTok{$}\NormalTok{region)}
+\FunctionTok{print}\NormalTok{(by\_region)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## northeast northwest southeast southwest 
+##       324       325       364       325
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, }\DecValTok{80}\NormalTok{), }\StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\end{verbatim}
+
+\#Processing the dataset \#\# Encoding.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{encode }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{order =} \FunctionTok{unique}\NormalTok{(x))\{}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{factor}\NormalTok{(x, }\AttributeTok{levels =}\NormalTok{ order, }\AttributeTok{exclude =} \ConstantTok{NULL}\NormalTok{))}
+\NormalTok{  x}
+\NormalTok{\}}
+\NormalTok{encoded\_df }\OtherTok{\textless{}{-}}\NormalTok{ insurance\_data}
+\NormalTok{encoded\_df[[}\StringTok{"sex"}\NormalTok{]] }\OtherTok{\textless{}{-}} \FunctionTok{encode}\NormalTok{(insurance\_data[[}\StringTok{"sex"}\NormalTok{]])}
+\NormalTok{encoded\_df[[}\StringTok{"smoker"}\NormalTok{]] }\OtherTok{\textless{}{-}} \FunctionTok{encode}\NormalTok{(insurance\_data[[}\StringTok{"smoker"}\NormalTok{]])}
+\NormalTok{encoded\_df[[}\StringTok{"region"}\NormalTok{]] }\OtherTok{\textless{}{-}} \FunctionTok{encode}\NormalTok{(insurance\_data[[}\StringTok{"region"}\NormalTok{]])}
+\FunctionTok{head}\NormalTok{(encoded\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 9
+##     age   sex   bmi children smoker region charges age_category cbmi         
+##   <dbl> <dbl> <dbl>    <dbl>  <dbl>  <dbl>   <dbl> <chr>        <chr>        
+## 1    19     1  27.9        0      1      1  16885. 10-19        over-weight  
+## 2    18     2  33.8        1      2      2   1726. 10-19        obese        
+## 3    28     2  33          3      2      2   4449. 20-29        obese        
+## 4    33     2  22.7        0      2      3  21984. 30-39        normal-weight
+## 5    32     2  28.9        0      2      3   3867. 30-39        over-weight  
+## 6    31     1  25.7        0      2      2   3757. 30-39        over-weight
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(encoded\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## spc_tbl_ [1,338 x 9] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ age         : num [1:1338] 19 18 28 33 32 31 46 37 37 60 ...
+##  $ sex         : num [1:1338] 1 2 2 2 2 1 1 1 2 1 ...
+##  $ bmi         : num [1:1338] 27.9 33.8 33 22.7 28.9 ...
+##  $ children    : num [1:1338] 0 1 3 0 0 0 1 3 2 0 ...
+##  $ smoker      : num [1:1338] 1 2 2 2 2 2 2 2 2 2 ...
+##  $ region      : num [1:1338] 1 2 2 3 3 2 2 3 4 3 ...
+##  $ charges     : num [1:1338] 16885 1726 4449 21984 3867 ...
+##  $ age_category: chr [1:1338] "10-19" "10-19" "20-29" "30-39" ...
+##  $ cbmi        : chr [1:1338] "over-weight" "obese" "obese" "normal-weight" ...
+##  - attr(*, "spec")=
+##   .. cols(
+##   ..   age = col_double(),
+##   ..   sex = col_character(),
+##   ..   bmi = col_double(),
+##   ..   children = col_double(),
+##   ..   smoker = col_character(),
+##   ..   region = col_character(),
+##   ..   charges = col_double()
+##   .. )
+##  - attr(*, "problems")=<externalptr>
+\end{verbatim}
+
+\hypertarget{correlation-matrix}{%
+\subsection{correlation matrix}\label{correlation-matrix}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#corr \textless{}{-} cor(encoded\_df)}
+\CommentTok{\#g \textless{}{-} corrplot(corr, type="lower", tl.col = "black") }
+
+
+\CommentTok{\# Select only numeric columns from the dataframe}
+\NormalTok{numeric\_columns }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(encoded\_df, is.numeric)}
+\NormalTok{numeric\_data }\OtherTok{\textless{}{-}}\NormalTok{ encoded\_df[, numeric\_columns]}
+
+\CommentTok{\# Calculate correlation matrix}
+\NormalTok{corr }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(numeric\_data)}
+
+\CommentTok{\# Plot correlation matrix}
+\FunctionTok{library}\NormalTok{(corrplot)}
+\NormalTok{g }\OtherTok{\textless{}{-}} \FunctionTok{corrplot}\NormalTok{(corr, }\AttributeTok{type =} \StringTok{"lower"}\NormalTok{, }\AttributeTok{tl.col =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{final_project_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gg }\OtherTok{\textless{}{-}} \FunctionTok{heatmap}\NormalTok{(}\AttributeTok{x=}\NormalTok{corr, }\AttributeTok{col =} \FunctionTok{magma}\NormalTok{(}\DecValTok{10}\NormalTok{), }\AttributeTok{symm=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{final_project_files/figure-latex/unnamed-chunk-24-1.pdf}
+\# MODEL BUILDING
+
+Spilt dataset to train and test with ratio 7:3.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Next, set a seed for reproducibility}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Split the data into a training set and a test set with a 70{-}30 split}
+\NormalTok{split\_index }\OtherTok{\textless{}{-}} \FunctionTok{createDataPartition}\NormalTok{(encoded\_df}\SpecialCharTok{$}\NormalTok{charges, }\AttributeTok{p =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{list =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{train\_data }\OtherTok{\textless{}{-}}\NormalTok{ encoded\_df[split\_index, ]}
+\NormalTok{test\_data }\OtherTok{\textless{}{-}}\NormalTok{ encoded\_df[}\SpecialCharTok{{-}}\NormalTok{split\_index, ]}
+
+\CommentTok{\# Check the dimensions of the train set and test set}
+\FunctionTok{dim}\NormalTok{(train\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 938   9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(test\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 400   9
+\end{verbatim}
+
+\hypertarget{decision-tree-model}{%
+\subsubsection{Decision Tree model}\label{decision-tree-model}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# build the decision tree }
+\NormalTok{decision\_tr }\OtherTok{\textless{}{-}} \FunctionTok{rpart}\NormalTok{(smoker }\SpecialCharTok{\textasciitilde{}}\NormalTok{ age }\SpecialCharTok{+}\NormalTok{ sex }\SpecialCharTok{+}\NormalTok{ bmi }\SpecialCharTok{+}\NormalTok{ region, }\AttributeTok{data =}\NormalTok{ train\_data, }\AttributeTok{method =} \StringTok{"class"}\NormalTok{)}
+
+\CommentTok{\# make predictions on the test data}
+\NormalTok{predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(decision\_tr, test\_data, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "-------------------------------------------------------------------------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# convert predictions and test data to factor and make the levels as same}
+\NormalTok{predictions }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(predictions)}
+\NormalTok{test\_data}\SpecialCharTok{$}\NormalTok{smoker }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(test\_data}\SpecialCharTok{$}\NormalTok{smoker)}
+\FunctionTok{levels}\NormalTok{(predictions) }\OtherTok{\textless{}{-}} \FunctionTok{levels}\NormalTok{(test\_data}\SpecialCharTok{$}\NormalTok{smoker)}
+
+\FunctionTok{print}\NormalTok{(}\StringTok{"{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "-------------------------------------------------------------------------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# evaluation of the the model }
+\CommentTok{\# Confusion matrix to evalute Performance}
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\AttributeTok{predicted =}\NormalTok{ predictions, }\AttributeTok{actual =}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{smoker)}
+\NormalTok{confusion\_matrix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          actual
+## predicted   1   2
+##         1   0   0
+##         2  77 323
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "-------------------------------------------------------------------------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(decision\_tr) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Call:
+## rpart(formula = smoker ~ age + sex + bmi + region, data = train_data, 
+##     method = "class")
+##   n= 938 
+## 
+##   CP nsplit rel error xerror xstd
+## 1  0      0         1      0    0
+## 
+## Node number 1: 938 observations
+##   predicted class=2  expected loss=0.2100213  P(node) =1
+##     class counts:   197   741
+##    probabilities: 0.210 0.790
+\end{verbatim}
+
+\#Accuracy of the Decision tree model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{accuracy\_of\_decision\_tree }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{diag}\NormalTok{(confusion\_matrix)) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(confusion\_matrix)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The accuracy of the Decision Tree model is : "}\NormalTok{, accuracy\_of\_decision\_tree))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "The accuracy of the Decision Tree model is :  0.8075"
+\end{verbatim}
+
+\#\#\#build the Random forest model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{random\_forest\_model }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(smoker) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ train\_data, }\AttributeTok{ntree =} \DecValTok{500}\NormalTok{)}
+
+\CommentTok{\# make predictions on the test data}
+\NormalTok{random\_forest\_predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(random\_forest\_model, }\AttributeTok{newdata =}\NormalTok{ test\_data, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(}\StringTok{"{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "-------------------------------------------------------------------------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Evalute Performance}
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\AttributeTok{predicted =}\NormalTok{ random\_forest\_predictions, }\AttributeTok{actual =}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{smoker)}
+\NormalTok{confusion\_matrix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          actual
+## predicted   1   2
+##         1  71  10
+##         2   6 313
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "-------------------------------------------------------------------------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Summary of the model}
+\FunctionTok{summary}\NormalTok{(random\_forest\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Length Class  Mode     
+## call               4   -none- call     
+## type               1   -none- character
+## predicted        938   factor numeric  
+## err.rate        1500   -none- numeric  
+## confusion          6   -none- numeric  
+## votes           1876   matrix numeric  
+## oob.times        938   -none- numeric  
+## classes            2   -none- character
+## importance         8   -none- numeric  
+## importanceSD       0   -none- NULL     
+## localImportance    0   -none- NULL     
+## proximity          0   -none- NULL     
+## ntree              1   -none- numeric  
+## mtry               1   -none- numeric  
+## forest            14   -none- list     
+## y                938   factor numeric  
+## test               0   -none- NULL     
+## inbag              0   -none- NULL     
+## terms              3   terms  call
+\end{verbatim}
+
+\hypertarget{calculate-the-accuracy-of-the-model}{%
+\section{Calculate the accuracy of the
+model}\label{calculate-the-accuracy-of-the-model}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{accuracy\_Random }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{diag}\NormalTok{(confusion\_matrix)) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(confusion\_matrix)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Accuracy of the Random Forest Model is:"}\NormalTok{, accuracy\_Random))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Accuracy of the Random Forest Model is: 0.96"
+\end{verbatim}
+
+\hypertarget{compare-the-accuracy-of-three-model}{%
+\subsubsection{Compare the accuracy of three
+model}\label{compare-the-accuracy-of-three-model}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Accuracy of Decision Tree Model:"}\NormalTok{, (accuracy\_of\_decision\_tree))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Accuracy of Decision Tree Model: 0.8075
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Accuracy of Random Forest   Model:"}\NormalTok{, (accuracy\_Random))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Accuracy of Random Forest   Model: 0.96
+\end{verbatim}
+
+\end{document}

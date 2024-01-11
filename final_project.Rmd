@@ -2,7 +2,10 @@
 title: "final_project"
 author: "Diallo Mamadou Korka"
 date: "2023-12-23"
-output: html_document
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -145,11 +148,16 @@ age_category <- function(age) {
   age_dict <- c('0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90-99', '100-200')
   return(age_dict[findInterval(age, seq(0, 110, by = 10))])
 }
+
+# Apply the age_category function to create a new column 'age_category'
+insurance_data$age_category <- sapply(insurance_data$age, age_category)
+
 # Print counts by age category
 print("Age by category")
-by_age <- table(insurance_data$cage)
+by_age <- table(insurance_data$age_category)
 print(by_age)
 cat(rep('-', 80), '\n')
+
 ```
 #BMI Distribution
 ```{r} 
@@ -176,11 +184,15 @@ bmi_category <- function(bmi) {
   }
 }
 
+# Apply the bmi_category function to create a new column 'cbmi'
+insurance_data$cbmi <- sapply(insurance_data$bmi, bmi_category)
+
 # Print counts by BMI category
 print("BMI")
 by_bmi <- table(insurance_data$cbmi)
 print(by_bmi)
 cat(rep('-', 80), '\n')
+
 ```
 
 ```{r}
@@ -330,10 +342,6 @@ gg <- heatmap(x=corr, col = magma(10), symm=T)
 # MODEL BUILDING
 
 Spilt dataset to train and test with ratio 7:3.
-
-
-
-
 ```{r}
 # Next, set a seed for reproducibility
 set.seed(123)
@@ -348,48 +356,6 @@ dim(train_data)
 dim(test_data)
 
 
-```
-
-
-
-### Build Linear Regression Model
-```{r}
-lr <- lm(charges ~ age + sex + bmi + children + smoker + region, data=train_data)
-print(lr)
-
-# Predict on test data
-test_data$pred <- predict(lr, newdata = test_data)
-
-# Calculate R-squared
-R_squared <- summary(lr)$r.squared
-print(paste("R-squared:", R_squared))
-
-```
-# Print the accutracy for the Linear Regression Model
-```{r}
-R_squared
-```
-
-
-###  create a scatter plot of the actual and predicted values.
-```{r}
-gg <- ggplot(test_data, aes(x=pred, y=charges)) + 
-  geom_point(color = "lightsalmon", alpha=0.8) + 
-  geom_abline(color = "darkslategray", size=1) + 
-  ggtitle("prediction vs real charges (Linear Regression")
-gg
-```
-It's important to note that this graph can help you evaluate how well the model is performing by checking how closely the points are aligned to the line of perfect prediction. If the points are closely aligned to the line, the model is performing well. However, if the points are scattered away from the line, the model is not performing well and needs to be improved.
-### model demonstration with dummy data
-
-```{r}
-dum <- data.frame(age = 24,
-                  sex = 2, 
-                  bmi = 30.1,
-                  children = 0,
-                  smoker = 1, 
-                  region = 3)
-print(paste0("Charges Prediction for dum: ", round(predict(lr, dum), 2)))
 ```
 
 ### Decision Tree model
@@ -414,6 +380,8 @@ print("-------------------------------------------------------------------------
 summary(decision_tr) 
 
 ```
+
+
 #Accuracy of the Decision tree model
 ```{r}
 accuracy_of_decision_tree <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
@@ -438,14 +406,13 @@ summary(random_forest_model)
 ```
 # Calculate the accuracy of the model
 ```{r}
-accuracy1 <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
-print(paste("Accuracy of the Random Forest Model is:", accuracy1))
+accuracy_Random <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
+print(paste("Accuracy of the Random Forest Model is:", accuracy_Random))
 ```
 ### Compare the accuracy of three model
 ```{r}
-cat("Accuracy of Linear Model:", (R_squared)*100, "\n")
-cat("Accuracy of Decision Tree Model:", (accuracy2)*100, "\n")
-cat("Accuracy of Random Forest   Model:", (accuracy1)*100, "\n")
+cat("Accuracy of Decision Tree Model:", (accuracy_of_decision_tree))
+cat("Accuracy of Random Forest   Model:", (accuracy_Random))
 ```
 
 
