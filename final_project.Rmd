@@ -341,12 +341,12 @@ gg <- heatmap(x=corr, col = magma(10), symm=T)
 ```
 # MODEL BUILDING
 
-Spilt dataset to train and test with ratio 7:3.
+Spilt dataset to train and test 
 ```{r}
 # Next, set a seed for reproducibility
 set.seed(123)
 
-# Split the data into a training set and a test set with a 70-30 split
+# Split the data into a training set and a test set  
 split_index <- createDataPartition(encoded_df$charges, p = 0.7, list = FALSE)
 train_data <- encoded_df[split_index, ]
 test_data <- encoded_df[-split_index, ]
