@@ -263,7 +263,6 @@ by_smoker <- table(insurance_data$smoker)
 print(by_smoker)
 cat(rep('-', 80), '\n')
 ```
-There are less smoker. 
 
 ### analysis on region
 
@@ -411,8 +410,8 @@ print(paste("Accuracy of the Random Forest Model is:", accuracy_Random))
 ```
 ### Compare the accuracy of three model
 ```{r}
-cat("Accuracy of Decision Tree Model:", (accuracy_of_decision_tree))
-cat("Accuracy of Random Forest   Model:", (accuracy_Random))
+cat("Accuracy of Decision Tree Model: ", (accuracy_of_decision_tree))
+cat("\nAccuracy of Random Forest Model:", (accuracy_Random))
 ```
 
 
